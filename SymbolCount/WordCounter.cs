@@ -6,6 +6,10 @@ using System.Text;
 
 namespace SymbolCount
 {
+    /// <summary>
+    /// Cuts text into words and counts each word's frequency.
+    /// These are available in WordMap property.
+    /// </summary>
     class WordCounter
     {
         private Dictionary<string, int> _wordMap = new Dictionary<string, int>();

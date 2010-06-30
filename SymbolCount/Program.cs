@@ -36,9 +36,20 @@ namespace SymbolCount
                 }
             }
 
-            foreach(var keyValuePairs in wordCounter.WordMap.OrderByDescending((kvp) => kvp.Value))
+            var rnd = new Random();
+
+            var orderedList = wordCounter.WordMap.OrderByDescending((kvp) => kvp.Value).ToList();
+            var minIndex = 0;
+            var maxIndex = orderedList.Count - 1;
+
+            foreach(var keyValuePairs in orderedList)
             {
-                Console.WriteLine("{1} : {0}", keyValuePairs.Key, keyValuePairs.Value);
+                Console.WriteLine(
+                    "{0} [{1}, {2}] : {3}", 
+                    keyValuePairs.Value, 
+                    Math.Log(keyValuePairs.Value), 
+                    rnd.Next(minIndex, maxIndex), 
+                    keyValuePairs.Key);
             }
         }
 
