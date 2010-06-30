@@ -51,6 +51,7 @@
     <Compile Include="Tests\GetWordsTest.cs" />
     <Compile Include="Tests\WordPickerTests.cs" />
     <Compile Include="WordCounter.cs" />
+    <Compile Include="WordList.cs" />
     <Compile Include="WordPicker.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

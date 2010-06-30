@@ -14,7 +14,7 @@ namespace SymbolCount
     /// appears in the input map, the more often it will appear
     /// in the ouput sequence.
     /// </summary>
-    class WordPicker : IEnumerable<string>
+    public class WordPicker : IEnumerable<string>
     {
         private Random _rand = new Random();
 

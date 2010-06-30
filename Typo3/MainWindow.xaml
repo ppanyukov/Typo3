@@ -3,6 +3,18 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <DockPanel Margin="20,10,20,10">
+            <Label DockPanel.Dock="Left">Pick directory with source files</Label>
+            <Button Click="LoadWordList" DockPanel.Dock="Right" Margin="20,0,0,0" Padding="20,5,20,5">Load Word List</Button>
+            <TextBox x:Name="inputDir">C:\labs</TextBox>
+        </DockPanel>
+
+
     </Grid>
 </Window>

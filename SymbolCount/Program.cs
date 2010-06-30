@@ -27,7 +27,6 @@ namespace SymbolCount
 
 
             var wordCounter = new WordCounter();
-
             foreach(var fileName in GetFiles(dirName))
             {
                 using(var reader = File.OpenText(fileName))
