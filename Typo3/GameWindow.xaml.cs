@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -26,11 +27,16 @@ namespace Typo3
 
         private ScoreBoard _scores = new ScoreBoard();
 
+        SoundPlayer _soundPlayerHit = new SoundPlayer(@"media\hit.wav");
+        SoundPlayer _soundPlayerMiss = new SoundPlayer(@"media\miss.wav");
+        SoundPlayer _soundPlayerSkip = new SoundPlayer(@"media\skip.wav");
+
         public GameWindow()
         {
             InitializeComponent();
 
             scoreGrid.DataContext = _scores;
+            this.DataContext = _scores;
         }
 
         public WordPicker Picker{ get; set; }
@@ -59,15 +65,18 @@ namespace Typo3
                         if (_attempt.IsGood)
                         {
                             _scores.Hits = _scores.Hits + 1;
+                            _soundPlayerHit.Play();
                         }
                         else
                         {
                             _scores.Misses = _scores.Misses + 1;
+                            _soundPlayerMiss.Play();
                         }
                     }
                     else
                     {
                         _scores.Skips = _scores.Skips + 1;
+                        _soundPlayerSkip.Play();
                     }
 
                 }
