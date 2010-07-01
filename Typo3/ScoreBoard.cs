@@ -128,5 +128,10 @@ namespace Typo3
         {
             _maxGameTime += timeSpan;
         }
+
+        public void RemoveTime(TimeSpan timeSpan)
+        {
+            _maxGameTime -= timeSpan;
+        }
     }
 }

@@ -31,5 +31,32 @@ namespace Typo3.Properties {
                 return ((global::System.TimeSpan)(this["MaxGameTime"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("00:00:10")]
+        public global::System.TimeSpan HitTimeReward {
+            get {
+                return ((global::System.TimeSpan)(this["HitTimeReward"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("00:00:10")]
+        public global::System.TimeSpan MissTimePenalty {
+            get {
+                return ((global::System.TimeSpan)(this["MissTimePenalty"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("00:00:02")]
+        public global::System.TimeSpan SkipTimePenalty {
+            get {
+                return ((global::System.TimeSpan)(this["SkipTimePenalty"]));
+            }
+        }
     }
 }

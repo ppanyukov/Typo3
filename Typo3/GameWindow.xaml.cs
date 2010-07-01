@@ -93,20 +93,20 @@ namespace Typo3
                         if (_attempt.IsGood)
                         {
                             _scores.Hits = _scores.Hits + 1;
-                            _scores.AddTime(new TimeSpan(0, 0, 10));
+                            _scores.AddTime(Settings.Default.HitTimeReward);
                             _soundPlayerHit.Play();
                         }
                         else
                         {
                             _scores.Misses = _scores.Misses + 1;
-                            _scores.AddTime(new TimeSpan(0, 0, -5));
+                            _scores.RemoveTime(Settings.Default.MissTimePenalty);
                             _soundPlayerMiss.Play();
                         }
                     }
                     else
                     {
                         _scores.Skips = _scores.Skips + 1;
-                        _scores.AddTime(new TimeSpan(0, 0, -2));
+                        _scores.AddTime(Settings.Default.SkipTimePenalty);
                         _soundPlayerSkip.Play();
                     }
 
