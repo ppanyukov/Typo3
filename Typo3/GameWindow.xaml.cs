@@ -37,6 +37,8 @@ namespace Typo3
 
             scoreGrid.DataContext = _scores;
             this.DataContext = _scores;
+            ToggleFullScreen();
+
         }
 
         public WordPicker Picker{ get; set; }
@@ -98,12 +100,20 @@ namespace Typo3
 
         private void Window_PreviewKeyUp(object sender, KeyEventArgs e)
         {
-
+            if(Keyboard.Modifiers == ModifierKeys.Control && e.Key == Key.Enter)
+            {
+            }
         }
 
         private void Window_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             if(_attempt == null)
+            {
+                return;
+            }
+
+            // ignore CTRL
+            if(Keyboard.Modifiers == ModifierKeys.Control)
             {
                 return;
             }
@@ -141,6 +151,20 @@ namespace Typo3
                         boardBox.Foreground = new SolidColorBrush(Colors.Tomato);
                     }
                 }
+            }
+        }
+
+        private void ToggleFullScreen()
+        {
+            if(this.WindowStyle == System.Windows.WindowStyle.None)
+            {
+                WindowStyle = WindowStyle.SingleBorderWindow;
+                WindowState = WindowState.Normal;
+            }
+            else
+            {
+                WindowStyle = WindowStyle.None;
+                WindowState = WindowState.Maximized;   
             }
         }
     }
