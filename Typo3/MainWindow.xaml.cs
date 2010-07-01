@@ -27,7 +27,17 @@ namespace Typo3
         public MainWindow()
         {
             InitializeComponent();
+
+            this.Loaded += MainWindow_Loaded;
         }
+
+        void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            // Load word list and start game straight away.
+            LoadWordList(null, null);
+            StartButtonClick(null, null);
+        }
+
 
 
         private void LoadWordList(object sender, RoutedEventArgs e)
@@ -44,9 +54,9 @@ namespace Typo3
 
             _wordList = new WordList();
             _wordList.Load(inputDir.Text);
-            MessageBox.Show(string.Format(
-                "Loaded list of {0} words.",
-                _wordList.WordCounter.WordMap.Count));
+            //MessageBox.Show(string.Format(
+            //    "Loaded list of {0} words.",
+            //    _wordList.WordCounter.WordMap.Count));
 
             showWordListButton.IsEnabled = true;
             startButton.IsEnabled = true;
@@ -61,9 +71,13 @@ namespace Typo3
 
         private void StartButtonClick(object sender, RoutedEventArgs e)
         {
-            var gameWindow = new GameWindow();
-            gameWindow.Picker = _wordList.WordPicker;
-            gameWindow.Show();
+            if (_wordList != null)
+            {
+                var gameWindow = new GameWindow();
+                gameWindow.Picker = _wordList.WordPicker;
+                gameWindow.ShowActivated = true;
+                gameWindow.Show();
+            }
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Typo3.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="768">
+        Title="Typo setup" Height="350" Width="768">
 
 
     <Grid>
@@ -15,7 +15,7 @@
             <Label DockPanel.Dock="Left">Directory with source files</Label>
             <Button Click="ShowWordList" DockPanel.Dock="Right" Margin="20,0,0,0" Padding="20,5,20,5" IsEnabled="False" x:Name="showWordListButton">Show Word List</Button>
             <Button Click="LoadWordList" DockPanel.Dock="Right" Margin="20,0,0,0" Padding="20,5,20,5">Load Word List</Button>
-            <TextBox x:Name="inputDir">C:\labs</TextBox>
+            <TextBox x:Name="inputDir" Text="media"></TextBox>
         </DockPanel>
         
         <Button Grid.Row="1" Click="StartButtonClick" IsEnabled="False" x:Name="startButton">Start</Button>

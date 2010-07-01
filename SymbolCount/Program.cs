@@ -35,6 +35,16 @@ namespace SymbolCount
                 }
             }
 
+            foreach(var x in wordCounter.WordMap)
+            {
+                for(var i = 0; i < x.Value; ++i)
+                {
+                    Console.WriteLine(x.Key);                    
+                }
+            }
+
+            return;
+
             var rnd = new Random();
 
             var orderedList = wordCounter.WordMap.OrderByDescending((kvp) => kvp.Value).ToList();

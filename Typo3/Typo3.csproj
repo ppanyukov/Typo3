@@ -63,6 +63,9 @@
     <Compile Include="GameWindow.xaml.cs">
       <DependentUpon>GameWindow.xaml</DependentUpon>
     </Compile>
+    <Content Include="media\words.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Compile Include="ScoreBoard.cs" />
     <Compile Include="Tests\AttemptTests.cs" />
     <Compile Include="WordListWindow.xaml.cs">
