@@ -73,11 +73,19 @@ namespace SymbolCount
             {
                 // Get the random weight to get the word from.
                 // The get random word from the list of words having that weight
+                yield return NextWord;
+            }
+        }
+
+        private string NextWord
+        {
+            get
+            {
                 var weightTableIndex = _rand.Next(_weightTable.Count);
                 var currentWeight = _weightTable[weightTableIndex];
                 var wordListAtWeight = _wordWeightList[currentWeight];
                 var wordListIndex = _rand.Next(wordListAtWeight.Count);
-                yield return wordListAtWeight[wordListIndex];
+                return wordListAtWeight[wordListIndex];   
             }
         }
 

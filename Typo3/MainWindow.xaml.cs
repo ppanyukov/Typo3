@@ -48,6 +48,7 @@ namespace Typo3
                 "Loaded list of {0} words.",
                 _wordList.WordCounter.WordMap.Count));
             showWordListButton.IsEnabled = true;
+            startButton.IsEnabled = true;
         }
 
         private void ShowWordList(object sender, RoutedEventArgs e)
@@ -55,6 +56,13 @@ namespace Typo3
             var wordListWindow = new WordListWindow();
             wordListWindow.WordList = _wordList;
             wordListWindow.Show();
+        }
+
+        private void StartButtonClick(object sender, RoutedEventArgs e)
+        {
+            var gameWindow = new GameWindow();
+            gameWindow.WordPicker = _wordList.WordPicker;
+            gameWindow.Show();
         }
     }
 }

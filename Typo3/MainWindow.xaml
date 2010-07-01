@@ -5,8 +5,8 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
 
         <DockPanel Margin="20,10,20,10">
@@ -15,6 +15,8 @@
             <Button Click="LoadWordList" DockPanel.Dock="Right" Margin="20,0,0,0" Padding="20,5,20,5">Load Word List</Button>
             <TextBox x:Name="inputDir">C:\labs</TextBox>
         </DockPanel>
+        
+        <Button Grid.Row="1" Click="StartButtonClick" IsEnabled="False" x:Name="startButton">Start</Button>
 
 
     </Grid>
