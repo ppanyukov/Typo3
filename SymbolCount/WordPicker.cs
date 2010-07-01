@@ -77,7 +77,7 @@ namespace SymbolCount
             }
         }
 
-        private string NextWord
+        public string NextWord
         {
             get
             {

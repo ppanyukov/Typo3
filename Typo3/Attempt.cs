@@ -44,6 +44,11 @@ namespace Typo3
             get { return _isGood; }
         }
 
+        public string UserString
+        {
+            get { return _userString; }
+        }
+
         public void AddText(string text)
         {
             if (IsFinished)
@@ -52,7 +57,7 @@ namespace Typo3
             }
 
 
-            var newString = _userString + text;
+            var newString = UserString + text;
             if (OriginalText.StartsWith(newString, StringComparison.CurrentCulture))
             {
                 if (newString.Length == OriginalText.Length)

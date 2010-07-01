@@ -47,6 +47,7 @@ namespace Typo3
             MessageBox.Show(string.Format(
                 "Loaded list of {0} words.",
                 _wordList.WordCounter.WordMap.Count));
+
             showWordListButton.IsEnabled = true;
             startButton.IsEnabled = true;
         }
@@ -61,7 +62,7 @@ namespace Typo3
         private void StartButtonClick(object sender, RoutedEventArgs e)
         {
             var gameWindow = new GameWindow();
-            gameWindow.WordPicker = _wordList.WordPicker;
+            gameWindow.Picker = _wordList.WordPicker;
             gameWindow.Show();
         }
     }
