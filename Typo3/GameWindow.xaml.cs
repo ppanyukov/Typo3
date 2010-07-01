@@ -106,7 +106,7 @@ namespace Typo3
                     else
                     {
                         _scores.Skips = _scores.Skips + 1;
-                        _scores.AddTime(new TimeSpan(0, 0, -1));
+                        _scores.AddTime(new TimeSpan(0, 0, -2));
                         _soundPlayerSkip.Play();
                     }
 
