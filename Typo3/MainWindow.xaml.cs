@@ -22,6 +22,8 @@ namespace Typo3
     /// </summary>
     public partial class MainWindow : Window
     {
+        private WordList _wordList;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -40,9 +42,19 @@ namespace Typo3
                 return;
             }
 
-            var workList = new WordList();
-            workList.Load(inputDir.Text);
-            MessageBox.Show(workList.WordCounter.WordMap.Count.ToString());
+            _wordList = new WordList();
+            _wordList.Load(inputDir.Text);
+            MessageBox.Show(string.Format(
+                "Loaded list of {0} words.",
+                _wordList.WordCounter.WordMap.Count));
+            showWordListButton.IsEnabled = true;
+        }
+
+        private void ShowWordList(object sender, RoutedEventArgs e)
+        {
+            var wordListWindow = new WordListWindow();
+            wordListWindow.WordList = _wordList;
+            wordListWindow.Show();
         }
     }
 }

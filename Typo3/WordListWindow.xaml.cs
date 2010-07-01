@@ -10,6 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using SymbolCount;
 
 namespace Typo3
 {
@@ -21,11 +22,19 @@ namespace Typo3
         public WordListWindow()
         {
             InitializeComponent();
+
         }
 
-        public void LoadList(string sourceDirectory)
-        {
 
+        private WordList _wordList;
+        public WordList WordList
+        {
+            get { return _wordList; }
+            set
+            {
+                _wordList = value;
+                wordList.DataContext = _wordList.WordCounter.WordMap.OrderByDescending((x) => x.Value);
+            }
         }
     }
 }
