@@ -108,7 +108,7 @@ namespace Typo3
                     else
                     {
                         _scores.Skips = _scores.Skips + 1;
-                        _scores.AddTime(Settings.Default.SkipTimePenalty);
+                        _scores.RemoveTime(Settings.Default.SkipTimePenalty);
                         _soundPlayerSkip.Play();
                     }
 
