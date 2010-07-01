@@ -27,6 +27,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -39,42 +40,46 @@
             <TextBlock Foreground="Tomato" FontSize="18" Grid.Row="1" Grid.Column="0" Margin="5">Misses:</TextBlock>
             <TextBlock Foreground="Tomato" FontSize="18" Grid.Row="1" Grid.Column="1" Margin="5" Text="{Binding Path=Misses}"></TextBlock>
             
-            <TextBlock Foreground="DarkGoldenrod" FontSize="18" Grid.Row="2" Grid.Column="0" Margin="5">Skips</TextBlock>
-            <TextBlock Foreground="DarkGoldenrod" FontSize="18" Grid.Row="2" Grid.Column="1" Margin="5" Text="{Binding Path=Skips}" x:Name="skipsText">
-            </TextBlock>
+            <TextBlock Foreground="DarkGoldenrod" FontSize="18" Grid.Row="2" Grid.Column="0" Margin="5">Skips:</TextBlock>
+            <TextBlock Foreground="DarkGoldenrod" FontSize="18" Grid.Row="2" Grid.Column="1" Margin="5" Text="{Binding Path=Skips}" x:Name="skipsText"/>
+
+            <TextBlock Foreground="Black" FontSize="40" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" Text="{Binding Path=TimeLeft}"/>
         </Grid>
         
         <!-- Main content -->
-        <Grid Grid.Column="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="6*"/>
-                <RowDefinition Height="4*"/>
-            </Grid.RowDefinitions>
+        <DockPanel x:Name="gameDock">
+            <Grid Grid.Column="0" x:Name="gameContent">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="6*"/>
+                    <RowDefinition Height="4*"/>
+                </Grid.RowDefinitions>
 
-            <FlowDocumentScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto" >
-                <FlowDocument Foreground="DarkGray">
-                    <Paragraph>
-                        <Bold>INSTRUCTIONS:</Bold>
-                        Start typing words as they appear. The text will turn
-                        <Span Foreground="DarkGreen">GREEN</Span>
-                        if you typed the word correctly and will turn
-                        <Span Foreground="Tomato" >RED</Span> otherwise. Press
-                        <Bold>SPACE</Bold> to continue in this case.
+                <FlowDocumentScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto" >
+                    <FlowDocument Foreground="DarkGray">
+                        <Paragraph>
+                            <Bold>INSTRUCTIONS:</Bold>
+                            Start typing words as they appear. The text will turn
+                            <Span Foreground="DarkGreen">GREEN</Span>
+                            if you typed the word correctly and will turn
+                            <Span Foreground="Tomato" >RED</Span> otherwise. Press
+                            <Bold>SPACE</Bold> to continue in this case.
                     Pressing
-                        <Bold>ENTER will immediately jump to the next word.</Bold>
-                    </Paragraph>
+                            <Bold>ENTER will immediately jump to the next word.</Bold>
+                        </Paragraph>
 
-                </FlowDocument>
-            </FlowDocumentScrollViewer>
-            <Viewbox Stretch="Uniform" Grid.Row="1" Opacity="1">
-                <TextBlock x:Name="boardBox" Opacity="1"></TextBlock>
-            </Viewbox>
+                    </FlowDocument>
+                </FlowDocumentScrollViewer>
+                <Viewbox Stretch="Uniform" Grid.Row="1" Opacity="1">
+                    <TextBlock x:Name="boardBox" Opacity="1"></TextBlock>
+                </Viewbox>
 
-            <Viewbox Stretch="Uniform" Grid.Row="2">
-                <TextBlock x:Name="inputBox"></TextBlock>
-            </Viewbox>
-        </Grid>
+                <Viewbox Stretch="Uniform" Grid.Row="2">
+                    <TextBlock x:Name="inputBox"></TextBlock>
+                </Viewbox>
+            </Grid>
+        </DockPanel>
+
     </Grid>
 
 </Window>

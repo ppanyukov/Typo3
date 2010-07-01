@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Media;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using SymbolCount;
+using Typo3.Properties;
 
 namespace Typo3
 {
@@ -25,7 +26,7 @@ namespace Typo3
     {
         private Attempt _attempt;
 
-        private ScoreBoard _scores = new ScoreBoard();
+        private ScoreBoard _scores;
 
         SoundPlayer _soundPlayerHit = new SoundPlayer(@"media\hit.wav");
         SoundPlayer _soundPlayerMiss = new SoundPlayer(@"media\miss.wav");
@@ -35,10 +36,35 @@ namespace Typo3
         {
             InitializeComponent();
 
-            scoreGrid.DataContext = _scores;
-            this.DataContext = _scores;
+
             ToggleFullScreen();
             this.Background = new SolidColorBrush(Colors.WhiteSmoke);
+
+            _scores = new ScoreBoard(Settings.Default.MaxGameTime);
+            scoreGrid.DataContext = _scores;
+            this.DataContext = _scores;
+            _scores.GameOver += _scores_GameOver;
+        }
+
+        void _scores_GameOver(object sender, EventArgs e)
+        {
+            Action a = () =>
+            {
+                gameDock.Children.Clear();
+
+                Viewbox vb = new Viewbox();
+                vb.Stretch = Stretch.Uniform;
+
+                TextBlock t = new TextBlock();
+                t.Text = "GAME OVER";
+                t.Foreground = new SolidColorBrush(Colors.Red);
+                t.FontWeight = FontWeights.UltraBold;
+
+                vb.Child = t;
+                gameDock.Children.Add(vb);
+            };
+
+            Dispatcher.BeginInvoke(a);
         }
 
         public WordPicker Picker{ get; set; }
@@ -67,17 +93,20 @@ namespace Typo3
                         if (_attempt.IsGood)
                         {
                             _scores.Hits = _scores.Hits + 1;
+                            _scores.AddTime(new TimeSpan(0, 0, 10));
                             _soundPlayerHit.Play();
                         }
                         else
                         {
                             _scores.Misses = _scores.Misses + 1;
+                            _scores.AddTime(new TimeSpan(0, 0, -5));
                             _soundPlayerMiss.Play();
                         }
                     }
                     else
                     {
                         _scores.Skips = _scores.Skips + 1;
+                        _scores.AddTime(new TimeSpan(0, 0, -1));
                         _soundPlayerSkip.Play();
                     }
 
@@ -114,6 +143,11 @@ namespace Typo3
         private void Window_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             if(_attempt == null)
+            {
+                return;
+            }
+
+            if(_scores.IsGameOver)
             {
                 return;
             }
