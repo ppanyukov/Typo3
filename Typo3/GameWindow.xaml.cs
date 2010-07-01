@@ -31,6 +31,7 @@ namespace Typo3
         SoundPlayer _soundPlayerHit = new SoundPlayer(@"media\hit.wav");
         SoundPlayer _soundPlayerMiss = new SoundPlayer(@"media\miss.wav");
         SoundPlayer _soundPlayerSkip = new SoundPlayer(@"media\skip.wav");
+        SoundPlayer _soundGameOver = new SoundPlayer(@"media\gameover.wav");
 
         public GameWindow()
         {
@@ -62,6 +63,7 @@ namespace Typo3
 
                 vb.Child = t;
                 gameDock.Children.Add(vb);
+                _soundGameOver.Play();
             };
 
             Dispatcher.BeginInvoke(a);

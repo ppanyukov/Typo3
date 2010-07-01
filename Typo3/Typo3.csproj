@@ -63,6 +63,9 @@
     <Compile Include="GameWindow.xaml.cs">
       <DependentUpon>GameWindow.xaml</DependentUpon>
     </Compile>
+    <Content Include="media\gameover.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="media\words.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
